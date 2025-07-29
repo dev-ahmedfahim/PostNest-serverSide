@@ -8,6 +8,7 @@ import userRoutes from "../routes/userRoutes.js";
 import authRoutes from "../routes/authRoutes.js";
 import postRoutes from "../routes/postRoutes.js";
 import announcementRoutes from "../routes/announcementRoutes.js"; 
+import commentRoutes from "../routes/commentRoutes.js";
 
 // --- Initialize ---
 dotenv.config();
@@ -23,6 +24,7 @@ app.use("/users", userRoutes);
 app.use("/auth", authRoutes);
 app.use("/posts", postRoutes);
 app.use("/announcements", announcementRoutes); 
+app.use("/comments", commentRoutes);
 
 // --- Root Route for Testing ---
 app.get("/", (req, res) => {
