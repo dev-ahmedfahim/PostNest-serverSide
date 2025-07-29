@@ -18,7 +18,7 @@ export const createUser = async (req, res) => {
   try {
     const db = getDB();
     const usersCollection = db.collection("users");
-    const user = req.body; // User data from the client
+    const user = req.body; 
 
     // --- Debugging and Validation Step ---
     if (!user || Object.keys(user).length === 0) {
