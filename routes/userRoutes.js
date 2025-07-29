@@ -1,9 +1,15 @@
 import express from "express";
-import { createUser } from "../controllers/userController.js";
+// Import the controller functions
+import { createUser, getAllUsers } from "../controllers/userController.js";
+// Import our JWT middleware
+import verifyJWT from "../middleware/verifyJWT.js";
 
 const router = express.Router();
 
 
 router.post("/", createUser);
+
+
+router.get("/", verifyJWT, getAllUsers);
 
 export default router;
