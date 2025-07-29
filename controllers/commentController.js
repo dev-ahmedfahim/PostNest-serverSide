@@ -6,13 +6,12 @@ export const getCommentsByPostId = async (req, res) => {
   try {
     const db = getDB();
     const commentsCollection = db.collection("comments");
-    const { postId } = req.params; 
+    const { postId } = req.params;
 
     if (!ObjectId.isValid(postId)) {
       return res.status(400).send({ message: "Invalid Post ID format." });
     }
 
-    // Find all comments that have a matching postId field
     const comments = await commentsCollection
       .find({ postId: postId })
       .sort({ createdAt: -1 })
@@ -30,9 +29,8 @@ export const createComment = async (req, res) => {
     const db = getDB();
     const commentsCollection = db.collection("comments");
     const commentData = req.body;
-    const commenterEmail = req.decoded?.email; 
+    const commenterEmail = req.decoded.email;
 
-    // Find the commenter in the users collection to get their details
     const usersCollection = db.collection("users");
     const commenter = await usersCollection.findOne({ email: commenterEmail });
 
@@ -46,7 +44,6 @@ export const createComment = async (req, res) => {
         .send({ message: "Post ID and comment text are required." });
     }
 
-    // --- Create the new comment document ---
     const newComment = {
       postId: commentData.postId,
       commentText: commentData.commentText,
