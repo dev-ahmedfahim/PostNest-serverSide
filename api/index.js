@@ -4,9 +4,10 @@ import dotenv from "dotenv";
 
 // --- Import Config and Routes ---
 import { connectDB } from "../config/db.js";
-import userRoutes from "../routes/userRoutes.js"; 
-import authRoutes from "../routes/authRoutes.js"; 
-import postRoutes from "../routes/postRoutes.js"; 
+import userRoutes from "../routes/userRoutes.js";
+import authRoutes from "../routes/authRoutes.js";
+import postRoutes from "../routes/postRoutes.js";
+import announcementRoutes from "../routes/announcementRoutes.js"; 
 
 // --- Initialize ---
 dotenv.config();
@@ -20,7 +21,8 @@ app.use(express.json());
 // --- API Routes ---
 app.use("/users", userRoutes);
 app.use("/auth", authRoutes);
-app.use("/posts", postRoutes); 
+app.use("/posts", postRoutes);
+app.use("/announcements", announcementRoutes); 
 
 // --- Root Route for Testing ---
 app.get("/", (req, res) => {
